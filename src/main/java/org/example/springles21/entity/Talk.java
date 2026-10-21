@@ -3,6 +3,7 @@ package org.example.springles21.entity;
 import jakarta.persistence.*;
 
 import lombok.*;
+import org.example.springles21.enums.TalkStatus;
 
 import java.time.LocalDateTime;
 
