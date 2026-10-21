@@ -1,6 +1,6 @@
 package org.example.springles21.repository;
 
-import org.example.springles21.entity.TalkStatus;
+import org.example.springles21.enums.TalkStatus;
 import org.example.springles21.entity.Talk;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

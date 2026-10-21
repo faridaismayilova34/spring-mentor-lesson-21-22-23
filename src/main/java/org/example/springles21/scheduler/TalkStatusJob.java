@@ -2,7 +2,7 @@ package org.example.springles21.scheduler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.springles21.entity.TalkStatus;
+import org.example.springles21.enums.TalkStatus;
 import org.example.springles21.entity.Talk;
 import org.example.springles21.repository.TalkRepository;
 import org.springframework.scheduling.annotation.Scheduled;

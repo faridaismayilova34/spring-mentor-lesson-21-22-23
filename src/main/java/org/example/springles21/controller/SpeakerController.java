@@ -1,6 +1,7 @@
 package org.example.springles21.controller;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.example.springles21.dto.request.SpeakerRequestDto;
 import org.example.springles21.dto.response.SpeakerResponseDto;
@@ -10,10 +11,12 @@ import org.example.springles21.service.impl.SpeakerServiceImpl;
 import org.example.springles21.service.impl.TalkServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/api/speakers")
 @RequiredArgsConstructor
@@ -32,12 +35,14 @@ public class SpeakerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SpeakerResponseDto> getSpeakerById(@PathVariable Long id) {
+    public ResponseEntity<SpeakerResponseDto> getSpeakerById(@PathVariable
+                                                             @Positive(message = "Id must be a positive number") Long id) {
         return ResponseEntity.ok(speakerService.getSpeakerById(id));
     }
 
     @GetMapping("/{id}/talks")
-    public ResponseEntity<List<TalkResponseDto>> getTalksBySpeakerId(@PathVariable Long id) {
+    public ResponseEntity<List<TalkResponseDto>> getTalksBySpeakerId(@PathVariable
+                                                                     @Positive(message = "Id must be a positive number") Long id) {
         return ResponseEntity.ok(speakerService.getTalksBySpeakerId(id));
     }
 }

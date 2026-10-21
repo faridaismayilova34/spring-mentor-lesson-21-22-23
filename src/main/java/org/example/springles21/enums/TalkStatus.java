@@ -1,4 +1,4 @@
-package org.example.springles21.entity;
+package org.example.springles21.enums;
 
 public enum TalkStatus {
     SCHEDULED,

@@ -1,10 +1,7 @@
 package org.example.springles21.dto.request;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.*;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -15,10 +12,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class TalkRequestDto {
-    @NotBlank(message = "Title cannot be blank")
+    @NotBlank(message = "Title is required")
+    @Size(min = 5, max = 150, message = "Title must be 5-150 characters")
     private String title;
 
-    @NotBlank(message = "Room cannot be blank")
+    @NotBlank(message = "Room is required")
     private String room;
 
     @NotNull(message = "Duration is required")
@@ -26,9 +24,13 @@ public class TalkRequestDto {
     @Max(value = 90, message = "Duration must be at most 90 minutes")
     private Integer durationMinutes;
 
-    @NotNull(message = "Scheduled time is required")
+    @NotNull(message = "Talk must be scheduled in the future")
+    @Future(message = "Talk must be scheduled in the future")
     private LocalDateTime scheduledAt;
 
     @NotNull(message = "Speaker ID is required")
+    @Positive(message = "Speaker id must be a positive number")
     private Long speakerId;
+
+
 }
